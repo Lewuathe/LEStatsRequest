@@ -1,0 +1,21 @@
+//
+//  LEStatsRequest.h
+//  LEStatsRequest
+//
+//  Created by Sasaki Kai on 2013/07/24.
+//  Copyright (c) 2013年 Sasaki Kai. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface LEStatsRequest : NSObject
+
++ (NSString*)unfoldParams:(NSDictionary*)params withAppId:(NSString*)appId;
+
+- (LEStatsRequest*)initWithAppId:(NSString*)appId;
+- (void)list:(NSDictionary*)params;
+- (void)meta:(NSDictionary*)params;
+- (void)search:(NSDictionary*)params;
+
+
+@end
