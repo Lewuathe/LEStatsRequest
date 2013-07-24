@@ -62,11 +62,34 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
 }
 
 - (void)meta:(NSDictionary *)params{
+    NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
+    NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getMetaInfoPath, paramString];
+    NSLog(@"Test url: %@", url);
+    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setTimeoutInterval:360];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"Error: %@", error);
+    }];
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        NSLog(@"Success: %@", responseString);
+    }];
+    [request startRequest];
     
 }
 
 - (void)search:(NSDictionary *)params{
-    
+    NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
+    NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsDataPath, paramString];
+    NSLog(@"Test url: %@", url);
+    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setTimeoutInterval:360];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"Error: %@", error);
+    }];
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        NSLog(@"Success: %@", responseString);
+    }];
+    [request startRequest];
 }
 
 @end
