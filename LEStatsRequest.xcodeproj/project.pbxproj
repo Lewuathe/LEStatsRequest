@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */; };
 		876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */; };
+		879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EDE2817A1674A00CFFC81 /* ResponseParser.m */; };
 		87F8E783179FFCF100E9F127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F8E782179FFCF100E9F127 /* UIKit.framework */; };
 		87F8E785179FFCF100E9F127 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F8E784179FFCF100E9F127 /* Foundation.framework */; };
 		87F8E787179FFCF100E9F127 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F8E786179FFCF100E9F127 /* CoreGraphics.framework */; };
@@ -43,6 +44,8 @@
 		876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEStatsRequest.m; sourceTree = "<group>"; };
 		876C2FA9179FFDF0003A9D40 /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = R9HTTPRequest.h; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.h; sourceTree = "<group>"; };
 		876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = R9HTTPRequest.m; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.m; sourceTree = "<group>"; };
+		879EDE2717A1674A00CFFC81 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseParser.h; sourceTree = "<group>"; };
+		879EDE2817A1674A00CFFC81 /* ResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseParser.m; sourceTree = "<group>"; };
 		87F8E77F179FFCF100E9F127 /* LEStatsRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEStatsRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F8E782179FFCF100E9F127 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87F8E784179FFCF100E9F127 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,8 @@
 				87F8E7A1179FFCF100E9F127 /* ViewController.m */,
 				876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */,
 				876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */,
+				879EDE2717A1674A00CFFC81 /* ResponseParser.h */,
+				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
 				876C2F69179FFDB4003A9D40 /* R9HttpRequest */,
 				87F8E789179FFCF100E9F127 /* Supporting Files */,
 			);
@@ -297,6 +302,7 @@
 				87F8E7A2179FFCF100E9F127 /* ViewController.m in Sources */,
 				876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */,
 				876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */,
+				879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,9 +8,11 @@
 
 #import "LEStatsRequest.h"
 #import "R9HTTPRequest.h"
+#import "ResponseParser.h"
 
 @interface LEStatsRequest (){
     NSString *_appId;
+    ResponseParser *_responseParser;
 }
 
 @end
@@ -50,6 +52,7 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsListPath, paramString];
     NSLog(@"Test url: %@", url);
+    /*
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setTimeoutInterval:360];
     [request setFailedHandler:^(NSError *error){
@@ -59,6 +62,13 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
         NSLog(@"Success: %@", responseString);
     }];
    [request startRequest];
+     */
+    _responseParser = [[ResponseParser alloc] init];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+    [parser setDelegate:_responseParser];
+    [parser parse];
+    
+    
 }
 
 - (void)meta:(NSDictionary *)params{
@@ -91,5 +101,7 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     }];
     [request startRequest];
 }
+
+
 
 @end
