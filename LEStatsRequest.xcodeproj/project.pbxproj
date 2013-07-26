@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8746122817A2BA9300017BA5 /* ListInf.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746122717A2BA9300017BA5 /* ListInf.m */; };
 		876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */; };
 		876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */; };
 		879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EDE2817A1674A00CFFC81 /* ResponseParser.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8746122617A2BA9300017BA5 /* ListInf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInf.h; sourceTree = "<group>"; };
+		8746122717A2BA9300017BA5 /* ListInf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInf.m; sourceTree = "<group>"; };
 		876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEStatsRequest.h; sourceTree = "<group>"; };
 		876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEStatsRequest.m; sourceTree = "<group>"; };
 		876C2FA9179FFDF0003A9D40 /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = R9HTTPRequest.h; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */,
 				879EDE2717A1674A00CFFC81 /* ResponseParser.h */,
 				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
+				8746122617A2BA9300017BA5 /* ListInf.h */,
+				8746122717A2BA9300017BA5 /* ListInf.m */,
 				876C2F69179FFDB4003A9D40 /* R9HttpRequest */,
 				87F8E789179FFCF100E9F127 /* Supporting Files */,
 			);
@@ -303,6 +308,7 @@
 				876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */,
 				876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */,
 				879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */,
+				8746122817A2BA9300017BA5 /* ListInf.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

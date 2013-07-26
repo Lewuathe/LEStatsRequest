@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ListInf.h"
 
-@interface ResponseParser : NSObject <NSXMLParserDelegate>
+typedef enum ApiType :NSInteger{
+    LIST,
+    META,
+    DATA
+} ApiType;
+
+@interface ResponseParser : NSObject <NSXMLParserDelegate> {
+    NSArray *listInfList;
+}
 
 @end
