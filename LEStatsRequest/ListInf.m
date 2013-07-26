@@ -14,6 +14,7 @@
 
 @implementation ListInf
 
+@synthesize identity;
 @synthesize statName;
 @synthesize govOrg;
 @synthesize statisticsName;
@@ -24,6 +25,7 @@
 @synthesize smallArea;
 
 - (void)debug {
+    NSLog(@"identity: %@",identity);
     NSLog(@"statName: %@",statName);
     NSLog(@"govOrg: %@",govOrg);
     NSLog(@"statisticsName: %@",statisticsName);

@@ -101,8 +101,11 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
     switch (_type) {
         case LIST:
             if (THIS_TAG(LIST_INF_TAG)) {
+                // Start LIST_INF element
                 isListInf = YES;
                 _currentListInf = [[ListInf alloc] init];
+                // Set data set id previously
+                _currentListInf.identity = [attributeDict objectForKey:@"id"];
             }
             else if (THIS_TAG(STAT_NAME_TAG)) {
                 isStatName = YES;
@@ -234,6 +237,7 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
 
 - (void)parser:(NSXMLParser *)parser foundAttributeDeclarationWithName:(NSString *)attributeName forElement:(NSString *)elementName type:(NSString *)type defaultValue:(NSString *)defaultValue {
 //    NSLog(@"foundAttributeDeclarationWithName");
+
 }
 
 @end

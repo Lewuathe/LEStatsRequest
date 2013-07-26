@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ListInf : NSObject {
+    NSString *identity;
     NSString *statName;
     NSString *govOrg;
     NSString *statisticsName;
@@ -19,6 +20,7 @@
     NSString *smallArea;
 }
 
+@property (nonatomic) NSString *identity;
 @property (nonatomic) NSString *statName;
 @property (nonatomic) NSString *govOrg;
 @property (nonatomic) NSString *statisticsName;
