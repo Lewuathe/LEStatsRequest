@@ -1,40 +1,30 @@
 //
-//  ListInf.m
+//  TableInf.m
 //  LEStatsRequest
 //
-//  Created by Sasaki Kai on 2013/07/26.
+//  Created by Sasaki Kai on 2013/07/27.
 //  Copyright (c) 2013年 Sasaki Kai. All rights reserved.
 //
 
-#import "ListInf.h"
+#import "TableInf.h"
 
-@interface ListInf ()
-
-@end
-
-@implementation ListInf
+@implementation TableInf
 
 @synthesize identity;
 @synthesize statName;
 @synthesize govOrg;
 @synthesize statisticsName;
 @synthesize title;
-@synthesize cycle;
 @synthesize surveyDate;
-@synthesize openDate;
-@synthesize smallArea;
 
 - (void)debug {
-    NSLog(@"------ ListInf ---------");
+    NSLog(@"------ TableInf --------");
     NSLog(@"identity: %@",identity);
     NSLog(@"statName: %@",statName);
     NSLog(@"govOrg: %@",govOrg);
     NSLog(@"statisticsName: %@",statisticsName);
     NSLog(@"title: %@",title);
-    NSLog(@"cycle: %@", cycle);
     NSLog(@"surveyDate: %@",surveyDate);
-    NSLog(@"openDate: %@",openDate);
-    NSLog(@"smallArea: %@",smallArea);
 }
 
 

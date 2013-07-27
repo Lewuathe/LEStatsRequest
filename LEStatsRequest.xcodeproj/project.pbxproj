@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8746122817A2BA9300017BA5 /* ListInf.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746122717A2BA9300017BA5 /* ListInf.m */; };
+		8746122B17A3635300017BA5 /* TableInf.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746122A17A3635300017BA5 /* TableInf.m */; };
+		8746122E17A3648600017BA5 /* ClassInf.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746122D17A3648600017BA5 /* ClassInf.m */; };
+		8746123117A3651B00017BA5 /* ClassObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746123017A3651B00017BA5 /* ClassObj.m */; };
+		8746123717A3660300017BA5 /* ClassMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746123617A3660300017BA5 /* ClassMeta.m */; };
 		876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */; };
 		876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */; };
 		879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EDE2817A1674A00CFFC81 /* ResponseParser.m */; };
@@ -43,6 +47,14 @@
 /* Begin PBXFileReference section */
 		8746122617A2BA9300017BA5 /* ListInf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInf.h; sourceTree = "<group>"; };
 		8746122717A2BA9300017BA5 /* ListInf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInf.m; sourceTree = "<group>"; };
+		8746122917A3635300017BA5 /* TableInf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInf.h; sourceTree = "<group>"; };
+		8746122A17A3635300017BA5 /* TableInf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableInf.m; sourceTree = "<group>"; };
+		8746122C17A3648600017BA5 /* ClassInf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInf.h; sourceTree = "<group>"; };
+		8746122D17A3648600017BA5 /* ClassInf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInf.m; sourceTree = "<group>"; };
+		8746122F17A3651A00017BA5 /* ClassObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassObj.h; sourceTree = "<group>"; };
+		8746123017A3651B00017BA5 /* ClassObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassObj.m; sourceTree = "<group>"; };
+		8746123517A3660300017BA5 /* ClassMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassMeta.h; sourceTree = "<group>"; };
+		8746123617A3660300017BA5 /* ClassMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMeta.m; sourceTree = "<group>"; };
 		876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEStatsRequest.h; sourceTree = "<group>"; };
 		876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEStatsRequest.m; sourceTree = "<group>"; };
 		876C2FA9179FFDF0003A9D40 /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = R9HTTPRequest.h; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.h; sourceTree = "<group>"; };
@@ -152,6 +164,14 @@
 				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
 				8746122617A2BA9300017BA5 /* ListInf.h */,
 				8746122717A2BA9300017BA5 /* ListInf.m */,
+				8746122917A3635300017BA5 /* TableInf.h */,
+				8746122A17A3635300017BA5 /* TableInf.m */,
+				8746122C17A3648600017BA5 /* ClassInf.h */,
+				8746122D17A3648600017BA5 /* ClassInf.m */,
+				8746122F17A3651A00017BA5 /* ClassObj.h */,
+				8746123017A3651B00017BA5 /* ClassObj.m */,
+				8746123517A3660300017BA5 /* ClassMeta.h */,
+				8746123617A3660300017BA5 /* ClassMeta.m */,
 				876C2F69179FFDB4003A9D40 /* R9HttpRequest */,
 				87F8E789179FFCF100E9F127 /* Supporting Files */,
 			);
@@ -309,6 +329,10 @@
 				876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */,
 				879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */,
 				8746122817A2BA9300017BA5 /* ListInf.m in Sources */,
+				8746122B17A3635300017BA5 /* TableInf.m in Sources */,
+				8746122E17A3648600017BA5 /* ClassInf.m in Sources */,
+				8746123117A3651B00017BA5 /* ClassObj.m in Sources */,
+				8746123717A3660300017BA5 /* ClassMeta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

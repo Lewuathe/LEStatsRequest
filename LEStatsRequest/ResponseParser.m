@@ -8,6 +8,7 @@
 
 #import "ResponseParser.h"
 
+
 #define THIS_TAG(TAG_NAME) [elementName isEqualToString:TAG_NAME]
 
 @interface ResponseParser () {
@@ -32,6 +33,8 @@
     // List API response object
     NSMutableArray *_listInfList;
     ListInf *_currentListInf;
+    
+    // Meta API response object
     
 }
 
@@ -83,7 +86,6 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 //    NSLog(@"parserDidEndDocument");
     NSLog(@"count: %d",[_listInfList count]);
-    [[_listInfList objectAtIndex:0] debug];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {

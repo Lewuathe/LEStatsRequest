@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ListInf.h"
+#import "TableInf.h"
 
 typedef enum ApiType :NSInteger{
     LIST,
