@@ -100,6 +100,8 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
         isDate = YES;
     }
     
+    
+    // Respective API tags
     switch (_type) {
         case LIST:
             if (THIS_TAG(LIST_INF_TAG)) {
@@ -133,6 +135,8 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
             else if (THIS_TAG(SMALL_AREA_TAG)) {
                 isSmallArea = YES;
             }
+            break;
+        case META:
             break;
             
         default:

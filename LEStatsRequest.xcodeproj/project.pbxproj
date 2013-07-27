@@ -110,6 +110,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8746123817A36A6D00017BA5 /* ListAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8746122617A2BA9300017BA5 /* ListInf.h */,
+				8746122717A2BA9300017BA5 /* ListInf.m */,
+			);
+			name = ListAPI;
+			sourceTree = "<group>";
+		};
+		8746123917A36A8D00017BA5 /* MetaAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8746122917A3635300017BA5 /* TableInf.h */,
+				8746122A17A3635300017BA5 /* TableInf.m */,
+				8746122C17A3648600017BA5 /* ClassInf.h */,
+				8746122D17A3648600017BA5 /* ClassInf.m */,
+				8746122F17A3651A00017BA5 /* ClassObj.h */,
+				8746123017A3651B00017BA5 /* ClassObj.m */,
+				8746123517A3660300017BA5 /* ClassMeta.h */,
+				8746123617A3660300017BA5 /* ClassMeta.m */,
+			);
+			name = MetaAPI;
+			sourceTree = "<group>";
+		};
 		876C2F69179FFDB4003A9D40 /* R9HttpRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,16 +186,8 @@
 				876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */,
 				879EDE2717A1674A00CFFC81 /* ResponseParser.h */,
 				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
-				8746122617A2BA9300017BA5 /* ListInf.h */,
-				8746122717A2BA9300017BA5 /* ListInf.m */,
-				8746122917A3635300017BA5 /* TableInf.h */,
-				8746122A17A3635300017BA5 /* TableInf.m */,
-				8746122C17A3648600017BA5 /* ClassInf.h */,
-				8746122D17A3648600017BA5 /* ClassInf.m */,
-				8746122F17A3651A00017BA5 /* ClassObj.h */,
-				8746123017A3651B00017BA5 /* ClassObj.m */,
-				8746123517A3660300017BA5 /* ClassMeta.h */,
-				8746123617A3660300017BA5 /* ClassMeta.m */,
+				8746123817A36A6D00017BA5 /* ListAPI */,
+				8746123917A36A8D00017BA5 /* MetaAPI */,
 				876C2F69179FFDB4003A9D40 /* R9HttpRequest */,
 				87F8E789179FFCF100E9F127 /* Supporting Files */,
 			);
