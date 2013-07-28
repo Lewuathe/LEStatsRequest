@@ -10,6 +10,7 @@
 
 
 #define THIS_TAG(TAG_NAME) [elementName isEqualToString:TAG_NAME]
+#define GET_ATTRIB(ATTRIB_NAME) [ResponseParser getAttrib:attributeDict withName:ATTRIB_NAME]
 
 @interface ResponseParser () {
     id _typeObject;
@@ -35,6 +36,14 @@
     ListInf *_currentListInf;
     
     // Meta API response object
+    BOOL isTableInf;
+    BOOL isClassObj;
+    BOOL isClass;
+    NSMutableArray *_metaInfList;
+    TableInf *_metaTableInf;
+    ClassInf *_metaClassInf;
+    ClassObj *_currentClassObj;
+    ClassMeta *_currentClassMeta;
     
 }
 
@@ -57,6 +66,22 @@ static NSString *const SURVEY_DATE_TAG     = @"SURVEY_DATE";
 static NSString *const OPEN_DATE_TAG       = @"OPEN_DATE";
 static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
 
+// Meta API response tag name
+static NSString *const TABLE_INF_TAG       = @"TABLE_INF";
+static NSString *const CLASS_INF_TAG       = @"CLASS_INF";
+static NSString *const CLASS_OBJ_TAG       = @"CLASS_OBJ";
+static NSString *const CLASS_TAG           = @"CLASS";
+// Meta API response attribute name
+static NSString *const ATTRIB_IDENTITY     = @"id";
+static NSString *const ATTRIB_NAME         = @"name";
+static NSString *const ATTRIB_DESCRIPTION  = @"description";
+static NSString *const ATTRIB_CODE         = @"code";
+static NSString *const ATTRIB_LEVEL        = @"level";
+static NSString *const ATTRIB_UNIT         = @"unit";
+static NSString *const ATTRIB_ADDINFO      = @"addInfo";
+
+
+
 - (ResponseParser*)initWithType:(ApiType)type {
     self = [super init];
     if (self != nil) {
@@ -64,6 +89,15 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
         _type = type;
     }
     return self;
+}
+
++ (NSString*)getAttrib:(NSDictionary*)dictionary withName:(NSString*)name {
+    if ([[dictionary allKeys] containsObject:name]) {
+        return [dictionary objectForKey:name];
+    }
+    else {
+        return @"-";
+    }
 }
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
@@ -78,6 +112,8 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
             _listInfList = [NSMutableArray array];
             break;
         default:
+            _metaTableInf = [[TableInf alloc] init];
+            _metaClassInf = [[ClassInf alloc] init];
             break;
     }
     
@@ -85,7 +121,9 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 //    NSLog(@"parserDidEndDocument");
-    NSLog(@"count: %d",[_listInfList count]);
+    [_metaTableInf debug];
+    NSLog(@"count: %d", [_metaClassInf.classObjList count]);
+
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
@@ -109,7 +147,7 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
                 isListInf = YES;
                 _currentListInf = [[ListInf alloc] init];
                 // Set data set id previously
-                _currentListInf.identity = [attributeDict objectForKey:@"id"];
+                _currentListInf.identity = GET_ATTRIB(ATTRIB_IDENTITY);
             }
             else if (THIS_TAG(STAT_NAME_TAG)) {
                 isStatName = YES;
@@ -136,7 +174,43 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
                 isSmallArea = YES;
             }
             break;
+            
         case META:
+            if (THIS_TAG(TABLE_INF_TAG)) {
+                isTableInf = YES;
+                _metaTableInf.identity = GET_ATTRIB(ATTRIB_IDENTITY);
+            }
+            else if (THIS_TAG(STAT_NAME_TAG)) {
+                isStatName = YES;
+            }
+            else if (THIS_TAG(GOV_ORG_TAG)) {
+                isGovOrg = YES;
+            }
+            else if (THIS_TAG(STATISTICS_NAME_TAG)) {
+                isStatisticsName = YES;
+            }
+            else if (THIS_TAG(TITLE_TAG)) {
+                isTitle = YES;
+            }
+            else if (THIS_TAG(SURVEY_DATE_TAG)) {
+                isSurveyDate = YES;
+            }
+            else if (THIS_TAG(CLASS_OBJ_TAG)) {
+                isClassObj = YES;
+                _currentClassObj = [[ClassObj alloc] init];
+                _currentClassObj.identity    = GET_ATTRIB(ATTRIB_IDENTITY);
+                _currentClassObj.name        = GET_ATTRIB(ATTRIB_NAME);
+                _currentClassObj.description = GET_ATTRIB(ATTRIB_DESCRIPTION);
+            }
+            else if (THIS_TAG(CLASS_TAG)) {
+                isClass = YES;
+                _currentClassMeta = [[ClassMeta alloc] init];
+                _currentClassMeta.code    = GET_ATTRIB(ATTRIB_CODE);
+                _currentClassMeta.name    = GET_ATTRIB(ATTRIB_NAME);
+                _currentClassMeta.level   = GET_ATTRIB(ATTRIB_LEVEL);
+                _currentClassMeta.unit    = GET_ATTRIB(ATTRIB_UNIT);
+                _currentClassMeta.addInfo = GET_ATTRIB(ATTRIB_ADDINFO);
+            }
             break;
             
         default:
@@ -188,7 +262,34 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
                 isSmallArea = NO;
             }
             break;
-            
+        case META:
+            if (THIS_TAG(TABLE_INF_TAG)) {
+                isTableInf = NO;
+            }
+            else if (THIS_TAG(STAT_NAME_TAG)) {
+                isStatName = NO;
+            }
+            else if (THIS_TAG(GOV_ORG_TAG)) {
+                isGovOrg = NO;
+            }
+            else if (THIS_TAG(STATISTICS_NAME_TAG)) {
+                isStatisticsName = NO;
+            }
+            else if (THIS_TAG(TITLE_TAG)) {
+                isTitle = NO;
+            }
+            else if (THIS_TAG(SURVEY_DATE_TAG)) {
+                isSurveyDate = NO;
+            }
+            else if (THIS_TAG(CLASS_OBJ_TAG)) {
+                isClassObj = NO;
+                [_metaClassInf appendClassObj:_currentClassObj];
+            }
+            else if (THIS_TAG(CLASS_TAG)) {
+                isClass = NO;
+                [_currentClassObj appendClassMeta:_currentClassMeta];
+            }
+            break;
         default:
             break;
     }
@@ -235,7 +336,25 @@ static NSString *const SMALL_AREA_TAG      = @"SMALL_AREA";
                 }
             }
             break;
-            
+        case META:
+            if (isTableInf) {
+                if (isStatName) {
+                    _metaTableInf.statName = string;
+                }
+                else if (isGovOrg) {
+                    _metaTableInf.govOrg = string;
+                }
+                else if (isStatisticsName) {
+                    _metaTableInf.statisticsName = string;
+                }
+                else if (isTitle) {
+                    _metaTableInf.title = string;
+                }
+                else if (isSurveyDate) {
+                    _currentListInf.surveyDate = string;
+                }
+            }
+            break;
         default:
             break;
     }

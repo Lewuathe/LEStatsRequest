@@ -16,6 +16,8 @@
 
 @implementation ClassInf
 
+@synthesize classObjList;
+
 - (ClassInf*)init{
     self = [super init];
     if (self != nil) {
@@ -29,5 +31,6 @@
     classObjList = _classObjList;
     return classObjList;
 }
+
 
 @end

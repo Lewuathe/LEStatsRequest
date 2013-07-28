@@ -13,6 +13,8 @@
     NSArray *classObjList;
 }
 
+@property (nonatomic) NSArray *classObjList;
+
 - (NSArray*)appendClassObj:(ClassObj*)classObj;
 
 @end

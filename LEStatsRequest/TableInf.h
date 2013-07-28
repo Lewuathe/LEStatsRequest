@@ -24,4 +24,6 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *surveyDate;
 
+- (void)debug;
+
 @end

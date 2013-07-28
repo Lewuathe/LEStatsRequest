@@ -63,7 +63,7 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     }];
    [request startRequest];
      */
-    _responseParser = [[ResponseParser alloc] init];
+    _responseParser = [[ResponseParser alloc] initWithType:LIST];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
     [parser parse];
@@ -74,6 +74,8 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
 - (void)meta:(NSDictionary *)params{
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getMetaInfoPath, paramString];
+    
+    /*
     NSLog(@"Test url: %@", url);
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setTimeoutInterval:360];
@@ -84,6 +86,12 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
         NSLog(@"Success: %@", responseString);
     }];
     [request startRequest];
+    */
+    
+    _responseParser = [[ResponseParser alloc] initWithType:META];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+    [parser setDelegate:_responseParser];
+    [parser parse];
     
 }
 

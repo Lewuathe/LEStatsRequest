@@ -10,6 +10,11 @@
 #import "ListInf.h"
 #import "TableInf.h"
 
+#import "ClassInf.h"
+#import "ClassObj.h"
+#import "ClassMeta.h"
+
+
 typedef enum ApiType :NSInteger{
     LIST,
     META,
@@ -19,5 +24,7 @@ typedef enum ApiType :NSInteger{
 @interface ResponseParser : NSObject <NSXMLParserDelegate> {
     NSArray *listInfList;
 }
+
+- (ResponseParser*)initWithType:(ApiType)type;
 
 @end

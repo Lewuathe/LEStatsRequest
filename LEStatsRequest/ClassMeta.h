@@ -22,4 +22,6 @@
 @property (nonatomic) NSString *unit;
 @property (nonatomic) NSString *addInfo;
 
+- (void)debug;
+
 @end

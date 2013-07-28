@@ -22,5 +22,6 @@
 @property (nonatomic) NSString *description;
 
 - (NSArray*)appendClassMeta:(ClassMeta*)classMeta;
+- (void)debug;
 
 @end
