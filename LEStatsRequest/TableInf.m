@@ -17,6 +17,11 @@
 @synthesize title;
 @synthesize surveyDate;
 
+@synthesize totalNumber;
+@synthesize fromNumber;
+@synthesize toNumber;
+@synthesize nextKey;
+
 - (void)debug {
     NSLog(@"------ TableInf --------");
     NSLog(@"identity: %@",identity);
@@ -25,6 +30,11 @@
     NSLog(@"statisticsName: %@",statisticsName);
     NSLog(@"title: %@",title);
     NSLog(@"surveyDate: %@",surveyDate);
+    
+    NSLog(@"totalNumber: %@",toNumber);
+    NSLog(@"fromNumber: %@",fromNumber);
+    NSLog(@"toNumber: %@",toNumber);
+    NSLog(@"nextKey: %@",nextKey);
 }
 
 

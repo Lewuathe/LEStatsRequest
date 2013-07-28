@@ -51,18 +51,7 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
 - (void)list:(NSDictionary *)params{
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsListPath, paramString];
-    NSLog(@"Test url: %@", url);
-    /*
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:360];
-    [request setFailedHandler:^(NSError *error){
-        NSLog(@"Error: %@", error);
-    }];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"Success: %@", responseString);
-    }];
-   [request startRequest];
-     */
+
     _responseParser = [[ResponseParser alloc] initWithType:LIST];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
@@ -75,19 +64,6 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getMetaInfoPath, paramString];
     
-    /*
-    NSLog(@"Test url: %@", url);
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:360];
-    [request setFailedHandler:^(NSError *error){
-        NSLog(@"Error: %@", error);
-    }];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"Success: %@", responseString);
-    }];
-    [request startRequest];
-    */
-    
     _responseParser = [[ResponseParser alloc] initWithType:META];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
@@ -95,19 +71,14 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     
 }
 
-- (void)search:(NSDictionary *)params{
+- (void)data:(NSDictionary *)params{
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsDataPath, paramString];
-    NSLog(@"Test url: %@", url);
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:360];
-    [request setFailedHandler:^(NSError *error){
-        NSLog(@"Error: %@", error);
-    }];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"Success: %@", responseString);
-    }];
-    [request startRequest];
+    
+    _responseParser = [[ResponseParser alloc] initWithType:DATA];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+    [parser setDelegate:_responseParser];
+    [parser parse];
 }
 
 

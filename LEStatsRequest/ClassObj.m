@@ -16,6 +16,7 @@
 
 @implementation ClassObj
 
+@synthesize classMetaList;
 @synthesize identity;
 @synthesize name;
 @synthesize description;

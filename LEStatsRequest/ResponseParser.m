@@ -121,8 +121,20 @@ static NSString *const ATTRIB_ADDINFO      = @"addInfo";
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 //    NSLog(@"parserDidEndDocument");
-    [_metaTableInf debug];
-    NSLog(@"count: %d", [_metaClassInf.classObjList count]);
+    /*
+    for (int i = 0; i < [_listInfList count]; i++) {
+        [[_listInfList objectAtIndex:i] debug];
+    }
+     */
+    
+    /*
+    for (int i = 0; i < [_metaClassInf.classObjList count]; i++) {
+        ClassObj *tmp = [_metaClassInf.classObjList objectAtIndex:i];
+        for (int j = 0; j < [tmp.classMetaList count]; j++) {
+            [[tmp.classMetaList objectAtIndex:j] debug];
+        }
+    }
+     */
 
 }
 

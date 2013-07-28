@@ -17,6 +17,7 @@
     NSString *description;
 }
 
+@property (nonatomic) NSArray *classMetaList;
 @property (nonatomic) NSString *identity;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *description;

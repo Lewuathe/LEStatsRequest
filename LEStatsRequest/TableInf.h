@@ -15,6 +15,13 @@
     NSString *statisticsName;
     NSString *title;
     NSString *surveyDate;
+    
+    // For data search API
+    NSString *totalNumber;
+    NSString *fromNumber;
+    NSString *toNumber;
+    NSString *nextKey;
+    
 }
 
 @property (nonatomic) NSString *identity;
@@ -23,6 +30,11 @@
 @property (nonatomic) NSString *statisticsName;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *surveyDate;
+
+@property (nonatomic) NSString *totalNumber;
+@property (nonatomic) NSString *fromNumber;
+@property (nonatomic) NSString *toNumber;
+@property (nonatomic) NSString *nextKey;
 
 - (void)debug;
 

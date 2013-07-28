@@ -15,7 +15,7 @@
 - (LEStatsRequest*)initWithAppId:(NSString*)appId;
 - (void)list:(NSDictionary*)params;
 - (void)meta:(NSDictionary*)params;
-- (void)search:(NSDictionary*)params;
+- (void)data:(NSDictionary*)params;
 
 
 @end
