@@ -14,6 +14,8 @@
 #import "ClassObj.h"
 #import "ClassMeta.h"
 
+#import "DataInf.h"
+
 
 typedef enum ApiType :NSInteger{
     LIST,

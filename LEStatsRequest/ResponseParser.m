@@ -45,6 +45,18 @@
     ClassObj *_currentClassObj;
     ClassMeta *_currentClassMeta;
     
+    // Data API response object
+    BOOL isTotalNumber;
+    BOOL isFromNumber;
+    BOOL isToNumber;
+    BOOL isNextKey;
+    BOOL isDataInf;
+    BOOL isNote;
+    BOOL isValue;
+    TableInf *_dataTableInf;
+    ClassInf *_dataClassInf;
+    DataInf  *_dataDataInf;
+    
 }
 
 @end
@@ -80,6 +92,15 @@ static NSString *const ATTRIB_LEVEL        = @"level";
 static NSString *const ATTRIB_UNIT         = @"unit";
 static NSString *const ATTRIB_ADDINFO      = @"addInfo";
 
+// Data API response tag name
+static NSString *const TOTAL_NUMBER_TAG    = @"TOTAL_TAG";
+static NSString *const FROM_NUMBER_TAG     = @"FROM_NUMBER";
+static NSString *const TO_NUMBER_TAG       = @"TO_NUMBER";
+static NSString *const NEXT_KEY_TAG        = @"NEXT_KEY";
+static NSString *const DATA_INF_TAG        = @"DATA_INF";
+static NSString *const NOTE_TAG            = @"NOTE";
+static NSString *const VALUE_TAG           = @"VALUE";
+
 
 
 - (ResponseParser*)initWithType:(ApiType)type {
@@ -111,9 +132,16 @@ static NSString *const ATTRIB_ADDINFO      = @"addInfo";
         case LIST:
             _listInfList = [NSMutableArray array];
             break;
-        default:
+        case META:
             _metaTableInf = [[TableInf alloc] init];
             _metaClassInf = [[ClassInf alloc] init];
+            break;
+        case DATA:
+            _dataTableInf = [[TableInf alloc] init];
+            _dataClassInf = [[ClassInf alloc] init];
+            _dataDataInf  = [[DataInf alloc] init];
+            break;
+        default:
             break;
     }
     
@@ -224,7 +252,56 @@ static NSString *const ATTRIB_ADDINFO      = @"addInfo";
                 _currentClassMeta.addInfo = GET_ATTRIB(ATTRIB_ADDINFO);
             }
             break;
+        case DATA:
+            if (THIS_TAG(TABLE_INF_TAG)) {
+                isTableInf = YES;
+                _dataTableInf.identity = GET_ATTRIB(ATTRIB_IDENTITY);
+            }
+            else if (THIS_TAG(STAT_NAME_TAG)) {
+                isStatName = YES;
+            }
+            else if (THIS_TAG(GOV_ORG_TAG)) {
+                isGovOrg = YES;
+            }
+            else if (THIS_TAG(STATISTICS_NAME_TAG)) {
+                isStatisticsName = YES;
+            }
+            else if (THIS_TAG(TITLE_TAG)) {
+                isTitle = YES;
+            }
+            else if (THIS_TAG(SURVEY_DATE_TAG)) {
+                isSurveyDate = YES;
+            }
+            else if (THIS_TAG(TOTAL_NUMBER_TAG)) {
+                isTotalNumber = YES;
+            }
+            else if (THIS_TAG(TO_NUMBER_TAG)) {
+                isToNumber = YES;
+            }
+            else if (THIS_TAG(FROM_NUMBER_TAG)) {
+                isFromNumber = YES;
+            }
+            else if (THIS_TAG(NEXT_KEY_TAG)) {
+                isNextKey = YES;
+            }
+            else if (THIS_TAG(CLASS_OBJ_TAG)) {
+                isClassObj = YES;
+                _currentClassObj = [[ClassObj alloc] init];
+                _currentClassObj.identity    = GET_ATTRIB(ATTRIB_IDENTITY);
+                _currentClassObj.name        = GET_ATTRIB(ATTRIB_NAME);
+                _currentClassObj.description = GET_ATTRIB(ATTRIB_DESCRIPTION);
+            }
+            else if (THIS_TAG(CLASS_TAG)) {
+                isClass = YES;
+                _currentClassMeta = [[ClassMeta alloc] init];
+                _currentClassMeta.code    = GET_ATTRIB(ATTRIB_CODE);
+                _currentClassMeta.name    = GET_ATTRIB(ATTRIB_NAME);
+                _currentClassMeta.level   = GET_ATTRIB(ATTRIB_LEVEL);
+                _currentClassMeta.unit    = GET_ATTRIB(ATTRIB_UNIT);
+                _currentClassMeta.addInfo = GET_ATTRIB(ATTRIB_ADDINFO);
+            }
             
+            break;
         default:
             break;
     }
