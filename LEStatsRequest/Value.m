@@ -31,5 +31,14 @@
 @synthesize unit;
 @synthesize v;
 
+- (void)debug{
+    NSLog(@"---------- Value ------------");
+    NSLog(@"tab: %@",tab);
+    NSLog(@"cat01: %@", cat01);
+    NSLog(@"area: %@",area);
+    NSLog(@"time: %@", time);
+    NSLog(@"unit: %@",unit);
+    NSLog(@"v: %@",v);
+}
 
 @end

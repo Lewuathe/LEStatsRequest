@@ -56,5 +56,6 @@
 
 @property (nonatomic) NSString *v;
 
+- (void)debug;
 
 @end

@@ -56,6 +56,8 @@
     TableInf *_dataTableInf;
     ClassInf *_dataClassInf;
     DataInf  *_dataDataInf;
+    Note *_currentNote;
+    Value *_currentValue;
     
 }
 
@@ -100,7 +102,26 @@ static NSString *const NEXT_KEY_TAG        = @"NEXT_KEY";
 static NSString *const DATA_INF_TAG        = @"DATA_INF";
 static NSString *const NOTE_TAG            = @"NOTE";
 static NSString *const VALUE_TAG           = @"VALUE";
-
+// Data API response attribute name
+static NSString *const ATTRIB_CHAR         = @"char";
+static NSString *const ATTRIB_TAB          = @"tab";
+static NSString *const ATTRIB_CAT01        = @"cat01";
+static NSString *const ATTRIB_CAT02        = @"cat02";
+static NSString *const ATTRIB_CAT03        = @"cat03";
+static NSString *const ATTRIB_CAT04        = @"cat04";
+static NSString *const ATTRIB_CAT05        = @"cat05";
+static NSString *const ATTRIB_CAT06        = @"cat06";
+static NSString *const ATTRIB_CAT07        = @"cat07";
+static NSString *const ATTRIB_CAT08        = @"cat08";
+static NSString *const ATTRIB_CAT09        = @"cat09";
+static NSString *const ATTRIB_CAT10        = @"cat10";
+static NSString *const ATTRIB_CAT11        = @"cat11";
+static NSString *const ATTRIB_CAT12        = @"cat12";
+static NSString *const ATTRIB_CAT13        = @"cat13";
+static NSString *const ATTRIB_CAT14        = @"cat14";
+static NSString *const ATTRIB_CAT15        = @"cat15";
+static NSString *const ATTRIB_AREA         = @"area";
+static NSString *const ATTRIB_TIME         = @"time";
 
 
 - (ResponseParser*)initWithType:(ApiType)type {
@@ -163,7 +184,13 @@ static NSString *const VALUE_TAG           = @"VALUE";
         }
     }
      */
-
+    for (int i = 0; i < [_dataDataInf.valueList count]; i++) {
+        [[_dataDataInf.valueList objectAtIndex:i] debug];
+    }
+    for (int i = 0; i < [_dataDataInf.noteList count]; i++) {
+        [[_dataDataInf.noteList objectAtIndex:i] debug];
+    }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
@@ -300,7 +327,37 @@ static NSString *const VALUE_TAG           = @"VALUE";
                 _currentClassMeta.unit    = GET_ATTRIB(ATTRIB_UNIT);
                 _currentClassMeta.addInfo = GET_ATTRIB(ATTRIB_ADDINFO);
             }
-            
+            else if (THIS_TAG(DATA_INF_TAG)) {
+                isDataInf = YES;
+            }
+            else if (THIS_TAG(NOTE_TAG)) {
+                isNote = YES;
+                _currentNote = [[Note alloc] init];
+                _currentNote.noteChar = GET_ATTRIB(ATTRIB_CHAR);
+            }
+            else if (THIS_TAG(VALUE_TAG)) {
+                isValue = YES;
+                _currentValue = [[Value alloc] init];
+                _currentValue.tab   = GET_ATTRIB(ATTRIB_TAB);
+                _currentValue.cat01 = GET_ATTRIB(ATTRIB_CAT01);
+                _currentValue.cat02 = GET_ATTRIB(ATTRIB_CAT02);
+                _currentValue.cat03 = GET_ATTRIB(ATTRIB_CAT03);
+                _currentValue.cat04 = GET_ATTRIB(ATTRIB_CAT04);
+                _currentValue.cat05 = GET_ATTRIB(ATTRIB_CAT05);
+                _currentValue.cat06 = GET_ATTRIB(ATTRIB_CAT06);
+                _currentValue.cat07 = GET_ATTRIB(ATTRIB_CAT07);
+                _currentValue.cat08 = GET_ATTRIB(ATTRIB_CAT08);
+                _currentValue.cat09 = GET_ATTRIB(ATTRIB_CAT09);
+                _currentValue.cat10 = GET_ATTRIB(ATTRIB_CAT10);
+                _currentValue.cat11 = GET_ATTRIB(ATTRIB_CAT11);
+                _currentValue.cat12 = GET_ATTRIB(ATTRIB_CAT12);
+                _currentValue.cat13 = GET_ATTRIB(ATTRIB_CAT13);
+                _currentValue.cat14 = GET_ATTRIB(ATTRIB_CAT14);
+                _currentValue.cat15 = GET_ATTRIB(ATTRIB_CAT15);
+                _currentValue.area  = GET_ATTRIB(ATTRIB_AREA);
+                _currentValue.time  = GET_ATTRIB(ATTRIB_TIME);
+                _currentValue.unit  = GET_ATTRIB(ATTRIB_UNIT);
+            }
             break;
         default:
             break;
@@ -379,6 +436,58 @@ static NSString *const VALUE_TAG           = @"VALUE";
                 [_currentClassObj appendClassMeta:_currentClassMeta];
             }
             break;
+        case DATA:
+            if (THIS_TAG(TABLE_INF_TAG)) {
+                isTableInf = NO;
+            }
+            else if (THIS_TAG(STAT_NAME_TAG)) {
+                isStatName = NO;
+            }
+            else if (THIS_TAG(GOV_ORG_TAG)) {
+                isGovOrg = NO;
+            }
+            else if (THIS_TAG(STATISTICS_NAME_TAG)) {
+                isStatisticsName = NO;
+            }
+            else if (THIS_TAG(TITLE_TAG)) {
+                isTitle = NO;
+            }
+            else if (THIS_TAG(SURVEY_DATE_TAG)) {
+                isSurveyDate = NO;
+            }
+            else if (THIS_TAG(TOTAL_NUMBER_TAG)) {
+                isTotalNumber = NO;
+            }
+            else if (THIS_TAG(TO_NUMBER_TAG)) {
+                isToNumber = NO;
+            }
+            else if (THIS_TAG(FROM_NUMBER_TAG)) {
+                isFromNumber = NO;
+            }
+            else if (THIS_TAG(NEXT_KEY_TAG)) {
+                isNextKey = NO;
+            }
+            else if (THIS_TAG(CLASS_OBJ_TAG)) {
+                isClassObj = NO;
+                [_dataClassInf appendClassObj:_currentClassObj];
+            }
+            else if (THIS_TAG(CLASS_TAG)) {
+                isClass = YES;
+                [_currentClassObj appendClassMeta:_currentClassMeta];
+                _currentClassMeta = [[ClassMeta alloc] init];
+            }
+            else if (THIS_TAG(DATA_INF_TAG)) {
+                isDataInf = NO;
+            }
+            else if (THIS_TAG(NOTE_TAG)) {
+                isNote = NO;
+                [_dataDataInf appendNoteList:_currentNote];
+            }
+            else if (THIS_TAG(VALUE_TAG)) {
+                isValue = NO;
+                [_dataDataInf appendValueList:_currentValue];
+            }
+            break;
         default:
             break;
     }
@@ -440,7 +549,34 @@ static NSString *const VALUE_TAG           = @"VALUE";
                     _metaTableInf.title = string;
                 }
                 else if (isSurveyDate) {
-                    _currentListInf.surveyDate = string;
+                    _metaTableInf.surveyDate = string;
+                }
+            }
+            break;
+        case DATA:
+            if (isTableInf) {
+                if (isStatName) {
+                    _dataTableInf.statName = string;
+                }
+                else if (isGovOrg) {
+                    _dataTableInf.govOrg = string;
+                }
+                else if (isStatisticsName) {
+                    _dataTableInf.statisticsName = string;
+                }
+                else if (isTitle) {
+                    _dataTableInf.title = string;
+                }
+                else if (isSurveyDate) {
+                    _dataTableInf.surveyDate = string;
+                }
+            }
+            else if (isDataInf) {
+                if (isNote) {
+                    _currentNote.n = string;
+                }
+                else if (isValue) {
+                    _currentValue.v = string;
                 }
             }
             break;

@@ -10,8 +10,14 @@
 
 @interface Note : NSObject {
     NSString *noteChar;
+    
+    NSString *n;
 }
 
 @property (nonatomic) NSString *noteChar;
+@property (nonatomic) NSString *n;
+
+- (void)debug;
+
 
 @end

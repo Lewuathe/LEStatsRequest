@@ -11,5 +11,11 @@
 @implementation Note
 
 @synthesize noteChar;
+@synthesize n;
 
+- (void)debug{
+    NSLog(@"--------- Note ----------");
+    NSLog(@"noteChar: %@", noteChar);
+    NSLog(@"n: %@",n);
+}
 @end
