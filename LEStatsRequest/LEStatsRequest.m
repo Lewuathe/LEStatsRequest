@@ -85,7 +85,6 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
 
 
 - (void)parseDidFinished:(StatsResponse *)response {
-    NSLog(@"parseDidFinished: %@",response);
     /*
     for (int i = 0; i < [response.dataDataInf.noteList count]; i++) {
         [[response.dataDataInf.noteList objectAtIndex:i] debug];
