@@ -14,6 +14,7 @@
 
 @interface ResponseParser () {
     id _typeObject;
+    StatsResponse *_statsResponse;
     ApiType _type;
     
     // Common tag
@@ -64,6 +65,8 @@
 @end
 
 @implementation ResponseParser
+
+@synthesize delegate;
 
 static NSString *const STATUS_TAG    = @"STATUS";
 static NSString *const ERROR_MSG_TAG = @"ERROR_MSG";
@@ -129,6 +132,7 @@ static NSString *const ATTRIB_TIME         = @"time";
     if (self != nil) {
         // Setting api type, list meta and data.
         _type = type;
+        _statsResponse = [[StatsResponse alloc] initWithType:_type];
     }
     return self;
 }
@@ -169,28 +173,25 @@ static NSString *const ATTRIB_TIME         = @"time";
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-//    NSLog(@"parserDidEndDocument");
-    /*
-    for (int i = 0; i < [_listInfList count]; i++) {
-        [[_listInfList objectAtIndex:i] debug];
+    NSLog(@"parserDidEndDocument");
+    switch (_type) {
+        case LIST:
+            _statsResponse.listListInf = _listInfList;
+            break;
+        case META:
+            _statsResponse.metaTableInf = _metaTableInf;
+            _statsResponse.metaClassInf = _metaClassInf;
+            break;
+        case DATA:
+            _statsResponse.dataTableInf = _dataTableInf;
+            _statsResponse.dataClassInf = _dataClassInf;
+            _statsResponse.dataDataInf  = _dataDataInf;
+            break;
+        default:
+            break;
     }
-     */
-    
-    /*
-    for (int i = 0; i < [_metaClassInf.classObjList count]; i++) {
-        ClassObj *tmp = [_metaClassInf.classObjList objectAtIndex:i];
-        for (int j = 0; j < [tmp.classMetaList count]; j++) {
-            [[tmp.classMetaList objectAtIndex:j] debug];
-        }
-    }
-     */
-    for (int i = 0; i < [_dataDataInf.valueList count]; i++) {
-        [[_dataDataInf.valueList objectAtIndex:i] debug];
-    }
-    for (int i = 0; i < [_dataDataInf.noteList count]; i++) {
-        [[_dataDataInf.noteList objectAtIndex:i] debug];
-    }
-    
+    [delegate parseDidFinished:_statsResponse];
+
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StatsResponse.h"
 #import "ListInf.h"
 #import "TableInf.h"
 
@@ -16,8 +17,16 @@
 
 #import "DataInf.h"
 
+@class StatsResponse;
 
-typedef enum ApiType :NSInteger{
+@protocol ResponseParserDelegate 
+
+- (void)parseDidFinished:(StatsResponse*)response;
+
+@end
+
+
+typedef enum ApiType : NSInteger{
     LIST,
     META,
     DATA
@@ -26,6 +35,8 @@ typedef enum ApiType :NSInteger{
 @interface ResponseParser : NSObject <NSXMLParserDelegate> {
     NSArray *listInfList;
 }
+
+@property (nonatomic, assign) id<ResponseParserDelegate> delegate;
 
 - (ResponseParser*)initWithType:(ApiType)type;
 

@@ -53,10 +53,10 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsListPath, paramString];
 
     _responseParser = [[ResponseParser alloc] initWithType:LIST];
+    _responseParser.delegate = self;
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
     [parser parse];
-    
     
 }
 
@@ -65,6 +65,7 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getMetaInfoPath, paramString];
     
     _responseParser = [[ResponseParser alloc] initWithType:META];
+    _responseParser.delegate = self;
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
     [parser parse];
@@ -76,11 +77,22 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsDataPath, paramString];
     
     _responseParser = [[ResponseParser alloc] initWithType:DATA];
+    _responseParser.delegate = self;
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
     [parser setDelegate:_responseParser];
     [parser parse];
 }
 
+
+- (void)parseDidFinished:(StatsResponse *)response {
+    NSLog(@"parseDidFinished: %@",response);
+    for (int i = 0; i < [response.dataDataInf.noteList count]; i++) {
+        [[response.dataDataInf.noteList objectAtIndex:i] debug];
+    }
+    for (int i = 0; i < [response.dataDataInf.valueList count]; i++) {
+        [[response.dataDataInf.valueList objectAtIndex:i] debug];
+    }
+}
 
 
 @end

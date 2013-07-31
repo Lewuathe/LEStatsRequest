@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ResponseParser.h"
 
-@interface LEStatsRequest : NSObject
+@interface LEStatsRequest : NSObject <ResponseParserDelegate>
 
 + (NSString*)unfoldParams:(NSDictionary*)params withAppId:(NSString*)appId;
 
