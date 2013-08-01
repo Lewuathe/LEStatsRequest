@@ -10,9 +10,12 @@
 #import "R9HTTPRequest.h"
 #import "ResponseParser.h"
 
+typedef void(^LEResponseHandler)(StatsResponse*);
+
 @interface LEStatsRequest (){
     NSString *_appId;
     ResponseParser *_responseParser;
+    LEResponseHandler _responseHandler;
 }
 
 @end
@@ -48,7 +51,8 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     return paramString;
 }
 
-- (void)list:(NSDictionary *)params{
+- (void)list:(NSDictionary *)params withHandler:(void (^)(StatsResponse *))handler{
+    _responseHandler = handler;
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsListPath, paramString];
 
@@ -60,7 +64,8 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     
 }
 
-- (void)meta:(NSDictionary *)params{
+- (void)meta:(NSDictionary *)params withHandler:(void (^)(StatsResponse *))handler{
+    _responseHandler = handler;
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getMetaInfoPath, paramString];
     
@@ -72,7 +77,8 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
     
 }
 
-- (void)data:(NSDictionary *)params{
+- (void)data:(NSDictionary *)params withHandler:(void (^)(StatsResponse *))handler{
+    _responseHandler = handler;
     NSString *paramString = [LEStatsRequest unfoldParams:params withAppId:_appId];
     NSString *url = [NSString stringWithFormat:@"http://%@%@%@", host, getStatsDataPath, paramString];
     
@@ -85,14 +91,8 @@ static NSString *const getStatsDataPath = @"/api/1.0b/app/getStatsData";
 
 
 - (void)parseDidFinished:(StatsResponse *)response {
-    /*
-    for (int i = 0; i < [response.dataDataInf.noteList count]; i++) {
-        [[response.dataDataInf.noteList objectAtIndex:i] debug];
-    }
-    for (int i = 0; i < [response.dataDataInf.valueList count]; i++) {
-        [[response.dataDataInf.valueList objectAtIndex:i] debug];
-    }
-     */
+
+    _responseHandler(response);
 }
 
 

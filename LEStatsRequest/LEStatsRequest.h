@@ -9,14 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "ResponseParser.h"
 
+
 @interface LEStatsRequest : NSObject <ResponseParserDelegate>
+
 
 + (NSString*)unfoldParams:(NSDictionary*)params withAppId:(NSString*)appId;
 
 - (LEStatsRequest*)initWithAppId:(NSString*)appId;
-- (void)list:(NSDictionary*)params;
-- (void)meta:(NSDictionary*)params;
-- (void)data:(NSDictionary*)params;
+- (void)list:(NSDictionary*)params withHandler:(void (^)(StatsResponse*))handler;
+- (void)meta:(NSDictionary*)params withHandler:(void (^)(StatsResponse*))handler;
+- (void)data:(NSDictionary*)params withHandler:(void (^)(StatsResponse*))handler;
 
 
 @end
