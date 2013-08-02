@@ -1,8 +1,11 @@
 LEStatsRequest
 ==============
 
-Statistics of Japan government request client in objective-C. This library is used in 
-iOS device such as iPhone or iPad.
+LEStatsRequest is the API client of statistics of Japan government. 
+This library contributes open data movement in Japan. You can obtain 
+official data with this client espacially in iOS device. iOS device 
+is restricted memory capacity, so this library parses response XML
+and make useful objects. Viva open government!!
 
 ## How to use
 
