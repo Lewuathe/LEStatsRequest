@@ -7,7 +7,6 @@
 //
 
 #import "LEStatsRequest.h"
-#import "R9HTTPRequest.h"
 #import "ResponseParser.h"
 
 typedef void(^LEResponseHandler)(StatsResponse*);

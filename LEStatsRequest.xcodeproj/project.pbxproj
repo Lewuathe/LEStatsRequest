@@ -17,7 +17,6 @@
 		8746123117A3651B00017BA5 /* ClassObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746123017A3651B00017BA5 /* ClassObj.m */; };
 		8746123717A3660300017BA5 /* ClassMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = 8746123617A3660300017BA5 /* ClassMeta.m */; };
 		876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */; };
-		876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */; };
 		879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EDE2817A1674A00CFFC81 /* ResponseParser.m */; };
 		87F8E783179FFCF100E9F127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F8E782179FFCF100E9F127 /* UIKit.framework */; };
 		87F8E785179FFCF100E9F127 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F8E784179FFCF100E9F127 /* Foundation.framework */; };
@@ -69,8 +68,6 @@
 		8746123617A3660300017BA5 /* ClassMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMeta.m; sourceTree = "<group>"; };
 		876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEStatsRequest.h; sourceTree = "<group>"; };
 		876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEStatsRequest.m; sourceTree = "<group>"; };
-		876C2FA9179FFDF0003A9D40 /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = R9HTTPRequest.h; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.h; sourceTree = "<group>"; };
-		876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = R9HTTPRequest.m; path = ../../R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.m; sourceTree = "<group>"; };
 		879EDE2717A1674A00CFFC81 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseParser.h; sourceTree = "<group>"; };
 		879EDE2817A1674A00CFFC81 /* ResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseParser.m; sourceTree = "<group>"; };
 		87F8E77F179FFCF100E9F127 /* LEStatsRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEStatsRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +132,22 @@
 			name = DataAPI;
 			sourceTree = "<group>";
 		};
+		8717D17117ABEBF100C72C4E /* LEStatsRequest */ = {
+			isa = PBXGroup;
+			children = (
+				876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */,
+				876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */,
+				879EDE2717A1674A00CFFC81 /* ResponseParser.h */,
+				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
+				8717D16E17A93CA200C72C4E /* StatsResponse.h */,
+				8717D16F17A93CA200C72C4E /* StatsResponse.m */,
+				8717D16417A5329800C72C4E /* DataAPI */,
+				8746123817A36A6D00017BA5 /* ListAPI */,
+				8746123917A36A8D00017BA5 /* MetaAPI */,
+			);
+			name = LEStatsRequest;
+			sourceTree = "<group>";
+		};
 		8746123817A36A6D00017BA5 /* ListAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,15 +170,6 @@
 				8746123617A3660300017BA5 /* ClassMeta.m */,
 			);
 			name = MetaAPI;
-			sourceTree = "<group>";
-		};
-		876C2F69179FFDB4003A9D40 /* R9HttpRequest */ = {
-			isa = PBXGroup;
-			children = (
-				876C2FA9179FFDF0003A9D40 /* R9HTTPRequest.h */,
-				876C2FAA179FFDF0003A9D40 /* R9HTTPRequest.m */,
-			);
-			name = R9HttpRequest;
 			sourceTree = "<group>";
 		};
 		87F8E776179FFCF100E9F127 = {
@@ -207,16 +211,7 @@
 				87F8E79D179FFCF100E9F127 /* MainStoryboard_iPad.storyboard */,
 				87F8E7A0179FFCF100E9F127 /* ViewController.h */,
 				87F8E7A1179FFCF100E9F127 /* ViewController.m */,
-				876C2F66179FFDA3003A9D40 /* LEStatsRequest.h */,
-				876C2F67179FFDA3003A9D40 /* LEStatsRequest.m */,
-				879EDE2717A1674A00CFFC81 /* ResponseParser.h */,
-				879EDE2817A1674A00CFFC81 /* ResponseParser.m */,
-				8717D16E17A93CA200C72C4E /* StatsResponse.h */,
-				8717D16F17A93CA200C72C4E /* StatsResponse.m */,
-				8717D16417A5329800C72C4E /* DataAPI */,
-				8746123817A36A6D00017BA5 /* ListAPI */,
-				8746123917A36A8D00017BA5 /* MetaAPI */,
-				876C2F69179FFDB4003A9D40 /* R9HttpRequest */,
+				8717D17117ABEBF100C72C4E /* LEStatsRequest */,
 				87F8E789179FFCF100E9F127 /* Supporting Files */,
 			);
 			path = LEStatsRequest;
@@ -370,7 +365,6 @@
 				87F8E793179FFCF100E9F127 /* AppDelegate.m in Sources */,
 				87F8E7A2179FFCF100E9F127 /* ViewController.m in Sources */,
 				876C2F68179FFDA3003A9D40 /* LEStatsRequest.m in Sources */,
-				876C2FAB179FFDF0003A9D40 /* R9HTTPRequest.m in Sources */,
 				879EDE2917A1674A00CFFC81 /* ResponseParser.m in Sources */,
 				8746122817A2BA9300017BA5 /* ListInf.m in Sources */,
 				8746122B17A3635300017BA5 /* TableInf.m in Sources */,
